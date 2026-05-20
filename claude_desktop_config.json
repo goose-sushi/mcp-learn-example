@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "mcp-learn-server": {
+      "command": "node",
+      "args": [
+        "/Users/mao/code/mcp-learn/src/server.js"
+      ]
+    }
+  }
+}
