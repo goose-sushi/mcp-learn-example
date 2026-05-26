@@ -2,13 +2,27 @@
   "name": "mcp-learn-example",
   "version": "1.0.0",
   "description": "MCP (Model Context Protocol) 学习案例",
-  "main": "src/server.js",
   "type": "module",
   "scripts": {
-    "start": "node src/server.js",
-    "client": "node src/client.js"
+    "mcp:stdio": "node src/modelcontextprotocol/stdio/server.js",
+    "mcp:stdio:client": "node src/modelcontextprotocol/stdio/client.js",
+    "mcp:sse": "node src/modelcontextprotocol/sse/server.js",
+    "mcp:sse:client": "node src/modelcontextprotocol/sse/client.js",
+    "mcp:streamable-http": "node src/modelcontextprotocol/streamable-http/server.js",
+    "mcp:streamable-http:client": "node src/modelcontextprotocol/streamable-http/client.js",
+    "mcp:simple-http": "node src/modelcontextprotocol/simple-http/server.js",
+    "fastmcp:stdio": "node src/fastmcp/stdio/server.js",
+    "fastmcp:stdio:client": "node src/fastmcp/stdio/client.js",
+    "fastmcp:sse": "node src/fastmcp/sse/server.js",
+    "fastmcp:sse:client": "node src/fastmcp/sse/client.js",
+    "fastmcp:streamable-http": "node src/fastmcp/streamable-http/server.js",
+    "fastmcp:streamable-http:client": "node src/fastmcp/streamable-http/client.js",
+    "fastmcp:simple-http": "node src/fastmcp/simple-http/server.js",
+    "fastmcp:simple-http:client": "node src/fastmcp/simple-http/client.js"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "express": "^5.2.1",
+    "fastmcp": "^4.0.1"
   }
 }

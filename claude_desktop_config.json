@@ -1,10 +1,16 @@
 {
   "mcpServers": {
-    "mcp-learn-server": {
+    "mcp-learn-stdio": {
       "command": "node",
       "args": [
-        "/Users/mao/code/mcp-learn/src/server.js"
+        "/Users/mao/code/mcp-learn/src/stdio/server.js"
       ]
+    },
+    "mcp-learn-sse": {
+      "url": "http://localhost:3001/sse"
+    },
+    "mcp-learn-streamable-http": {
+      "url": "http://localhost:3002/message"
     }
   }
 }
