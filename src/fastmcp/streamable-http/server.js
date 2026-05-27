@@ -84,8 +84,8 @@ server.addTool({
 });
 
 server.start({
-  transportType: "streamable-http",
-  streamableHttp: {
+  transportType: "httpStream",
+  httpStream: {
     port: 3012,
   },
 });

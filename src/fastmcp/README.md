@@ -80,14 +80,16 @@ npm run fastmcp:simple-http:client
 
 ## 四种传输方式对比
 
-| 特性 | stdio | SSE | Streamable HTTP | Simple HTTP |
-|------|-------|-----|-----------------|-------------|
+| 特性 | stdio | SSE | HTTP Stream | Simple HTTP |
+|------|-------|-----|-------------|-------------|
 | **通信方式** | 父子进程 stdin/stdout | HTTP 长连接 + POST | HTTP 请求/响应 | HTTP 请求/响应 |
 | **服务器端口** | 无 | 3011 | 3012 | 3013 |
 | **需要先启动服务器** | 否 | 是 | 是 | 是 |
 | **复杂度** | 低 | 低 | 低 | 低 |
 | **FastMCP 支持** | ✅ 原生 | ✅ 原生 | ✅ 原生 | ✅ 原生 |
 | **适用场景** | 本地工具 | Web 集成 | Web 集成 / Claude Desktop | Postman 测试 |
+
+**注意：** FastMCP 使用 `httpStream` 作为 HTTP 传输类型（配置中的 `transportType: "httpStream"`），而不是 `streamable-http`。
 
 ## 可用工具
 
@@ -114,12 +116,21 @@ npm run fastmcp:simple-http:client
 - 官方 SDK：灵活、功能完整，但代码量大（详见 `../modelcontextprotocol/` 目录）
 - FastMCP：简洁、易用，代码量减少约 50%
 
+### 关于警告信息
+
+当启动 FastMCP 服务器时，你可能会看到警告：
+```
+[FastMCP warning] could not infer client capabilities after 10 attempts. Connection may be unstable.
+```
+
+**这是正常的！** 这个警告只是表示服务器正在等待客户端连接。一旦有客户端连接（比如通过 Claude Desktop 或我们的测试客户端），这个警告就会消失。
+
 ### 代码对比示例
 
-**官方 SDK：**
+**官方 SDK:**
 ```javascript
 server.setRequestHandler(ListToolsRequestSchema, async () => {
-  return { tools: [...] };
+  return { tools: [] };
 });
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -128,7 +139,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
 });
 ```
 
-**FastMCP：**
+**FastMCP:**
 ```javascript
 server.addTool({
   name: "tool_name",
