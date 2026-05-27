@@ -4,7 +4,14 @@ import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/
 
 async function main() {
   const transport = new StreamableHTTPClientTransport(
-    new URL("http://localhost:3012/mcp")
+    new URL("http://localhost:3012/mcp"),
+    {
+      requestInit: {
+        headers: {
+          Accept: "application/json, text/event-stream",
+        },
+      },
+    }
   );
 
   const client = new Client(
