@@ -79,7 +79,7 @@ server.addTool({
     message: z.string().describe("要回显的消息"),
   }),
   execute: async (args) => {
-    return `回显: ${args.message}\n长度: ${args.message.length} 字符`;
+    return `回显: ${args.message}\n长度: ${args.message.length} 字符 `;
   },
 });
 
